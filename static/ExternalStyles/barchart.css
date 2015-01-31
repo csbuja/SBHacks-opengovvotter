@@ -1,0 +1,136 @@
+/*#chartContainer{
+	width:400px;
+}*/
+
+.canvasjs-chart-container{
+	z-index: -1000;
+}
+
+#chartContainer2{
+	height: 350px;
+position: relative;
+left: 640px;
+bottom: 350px;
+}
+
+#budgetDisplay{
+	width: 100px;
+	height: 40px;
+	border: 2px solid green;
+	margin-top: 10px;
+	position: relative;
+	top: 39px;
+	left: 28px;
+	text-align: center;
+}
+
+#userInput{
+	/*border:1px solid black;*/
+	display: flex;
+	flex-direction: column;
+	height:400px;
+	width: 400px;
+	position: relative;
+	left: 700px;
+	bottom: 320px;
+	z-index:-1000;
+}
+
+.circle{
+	background-color: red;
+	border-radius: 50%;
+	width: 16px;
+	height: 16px;
+	margin: 10px 0px 0px 10px;
+}
+
+.element{
+	/*border: 1px solid black;*/
+	height: 50px;
+	width: 180px;
+	position: relative;
+	margin-top: 13px;
+	margin-left: 10px;
+}
+
+.head {
+	position: relative;
+	left: 66px;
+	font-family: Helvetica;
+}
+
+.input{
+
+}
+
+.selectedAmount{
+	height: 19px;
+	width: 150px;
+	position: relative;
+	left: 40px;
+	bottom: 20px;
+}
+
+#proposeBudget{
+	width: 56px;
+	height: 37px;
+	border: 1px solid #ccc;
+	background-color: white;
+	-webkit-appearance: none;
+	border-radius: 6px;
+	outline: none;
+}
+
+#proposeBudget:hover{
+	background-color:#e8f0d1;
+}
+
+#proposeBudget:active{
+	background-color:#7f9933;
+}
+
+
+span{
+	position: relative;
+	left: -110px;
+}
+
+.submitButton{
+	width: 90px;
+	position: relative;
+	top: 4px;
+	left: 150px;
+}
+
+
+.title{
+	position: relative;
+	bottom: 18px;
+	left: 45px;
+	font-family: Helvetica;
+	font-size: 13px;
+}
+
+.teal{
+	background-color:#369EAD;
+}
+
+.burg{
+	background-color:#C24642;
+}
+
+.green{
+	background-color:#86B402;
+}
+
+.purp{
+	background-color:#7F6084;
+}
+
+.turq{
+	background-color:#A2D1CF;
+}
+
+.gold{
+	background-color:#C8B631;
+}

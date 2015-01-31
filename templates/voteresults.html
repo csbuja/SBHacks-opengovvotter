@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{%block body%}
+
+<div id="chartContainer1" style="height: 350px; ">
+</div>
+
+<div id="chartContainer2" style="height: 350px;">
+</div>
+
+{% endblock %}
+{% block style %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ExternalStyles/barchart.css')}}" />
+{% endblock %} 
+{% block script %}
+<script type="text/javascript"> 
+   var CITYBUDGET = "{{citybudget}}";
+   var VOTEBUDGET = "{{voteBudget}}";
+   CITYBUDGET = cleanAndParseJinja2Globals(CITYBUDGET);
+   VOTEBUDGET = cleanAndParseJinja2Globals(VOTEBUDGET);
+   var decode = function(s){
+    var o = {}
+    var arr = s.split('##??##')
+    for(var i=0;i<arr.length;++i)
+    {
+        var labelValTuple = arr[i].split('####')
+        o[labelValTuple[0]] = parseInt(labelValTuple[1])
+    }
+    return o;
+   }
+   CITYBUDGET = _.map(CITYBUDGET,decode);
+   VOTEBUDGET = _.map(VOTEBUDGET,decode);
+</script>
+<script  src="{{ url_for('static', filename='FEScript/budgetModel.js')}}"></script>
+<script  src="{{ url_for('static', filename='FEScript/voteresultsController.js')}}"></script>
+{% endblock %}
