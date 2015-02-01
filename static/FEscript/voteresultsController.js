@@ -5,6 +5,48 @@ var transformModelToGraph = function(citybudget){
 		return {"label": key, "y":val};
 	});
 }
+//cut the aveBudget off and count the number of extras
+var cutOffandCalcExtra = function(aveBudget, realBudget){
+	var MARGIN = .1;
+	var numExtra = 0;
+	var numExtra = 0;
+	_.each(realBudget,function(v){
+		numExtra+=v;
+	});
+
+	_.each(aveBudget,function(v,key){
+		var upperBound = realBudget[key] + MARGIN*realBudget[key];
+ 		var lowerBound = realBudget[key] - MARGIN*realBudget[key];
+
+ 		if ( v > upperBound) {
+ 			aveBudget[key] = upperBound;
+ 		}
+ 		else if (v < lowerBound) {
+ 			aveBudget[key] = lowerBound;
+ 		}
+ 		numExtra-=aveBudget[key];
+	});
+	return [numExtra,realBudget,aveBudget];
+}
+
+
+//assumes that the aveBudget has already been cut off at cutoff points
+//returns a redistrubted object
+var reDistributeExtras = function(numExtra, realBudget, aveBudget){
+	var total = 0;
+	_.each(realBudget,function(v){
+		total+=v;
+	});
+	proportionMap = {}
+	_.each(realBudget,function(v,key){
+		proportionMap[key] = v/total;
+	});
+	_.each(aveBudget, function(v,key){
+		aveBudget[key] += ( proportionMap[key] * numExtra)
+	});
+	return aveBudget
+}
+
 
 //assumes at least one voted Budget
 var calcAverageLabels = function(votedBudgets){
@@ -29,7 +71,8 @@ var calcAverageLabels = function(votedBudgets){
 $(document).ready(function(){
 	var budgetModel = new BudgetModel(CITYBUDGET[0],VOTEBUDGET,CITYNAME,ENCODEDCITYNAME);
 	var transformedCityBudget = transformModelToGraph(budgetModel.getCityBudget());
-	var transformedVoteAggregateBudget = transformModelToGraph( calcAverageLabels( budgetModel.getVotedBudgets()));
+	var aveBudget = calcAverageLabels( budgetModel.getVotedBudgets())
+	var transformedVoteAggregateBudget = transformModelToGraph(reDistributeExtras.apply(null,cutOffandCalcExtra(aveBudget,budgetModel.getCityBudget()) ) );
 	CanvasJS.addColorSet("SpencersColors", budgetModel.getBudgetColors());
 	var cityChart = new CanvasJS.Chart("chartContainer1",
     {
