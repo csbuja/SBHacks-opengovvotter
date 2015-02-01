@@ -27,9 +27,10 @@ var calcAverageLabels = function(votedBudgets){
 
 
 $(document).ready(function(){
-	var budgetModel = new BudgetModel(CITYBUDGET[0],VOTEBUDGET);
+	var budgetModel = new BudgetModel(CITYBUDGET[0],VOTEBUDGET,CITYNAME,ENCODEDCITYNAME);
 	var transformedCityBudget = transformModelToGraph(budgetModel.getCityBudget());
 	var transformedVoteAggregateBudget = transformModelToGraph( calcAverageLabels( budgetModel.getVotedBudgets()));
+	CanvasJS.addColorSet("SpencersColors", budgetModel.getBudgetColors());
 	var cityChart = new CanvasJS.Chart("chartContainer1",
     {
       title:{
@@ -53,7 +54,7 @@ $(document).ready(function(){
         verticalAlign: "bottom",
         horizontalAlign: "center"
       },
-      theme: "theme1",
+      colorSet: "SpencersColors",
       data: [
 
       {        
@@ -65,7 +66,6 @@ $(document).ready(function(){
       }   
       ]
     });
-	debugger;
     cityChart.render();
   var voteChart = new CanvasJS.Chart("chartContainer2",
     {
@@ -90,7 +90,7 @@ $(document).ready(function(){
         verticalAlign: "bottom",
         horizontalAlign: "center"
       },
-      theme: "theme1",
+      colorSet: "SpencersColors",
       data: [
 
       {        

@@ -26,3 +26,12 @@ def batchInsert(engine):
         except:
             print "error"
     connection.close()
+
+def rowExists(engine,primKey,tableName, primColName):
+    primKey = str(primKey)
+    query = "SELECT * FROM %s WHERE %s=\'%s\'" % (tableName,primColName,primKey)
+    result = engine.execute(query)
+    count = 0
+    for row in result:
+        count+=1
+    return bool(count)

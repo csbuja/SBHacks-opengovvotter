@@ -3,45 +3,9 @@
   <div id="chartContainer" style="height: 350px; ">
     </div>
   <div id="userInput" >
-  <h class ="head"> Propose Budget </h>
-    <div class="element">
-      <div class="circle teal"></div>
-      <div class="input"><input oninput = "calculateBudget(this.value);" class="selectedAmount" type='text'></input></div>
-      <span class="title">Utilities</span>
+  <h class ="head"> Proposed Budget </h>
+    <div class="elements">
     </div>
-
-    <div class="element">
-      <div class="circle burg"></div>
-      <div class="input"><input oninput = "calculateBudget(this.value);" class="selectedAmount" type='text'></input></div>
-      <span class="title">Public Works</span>
-    </div>
-
-    <div class="element">
-      <div class="circle purp"></div>
-      <div class="input"><input oninput = "calculateBudget(this.value);" class="selectedAmount" type='text'></input></div>
-      <span class="title">Non-Departmental</span>
-    </div>
-
-    <div class="element">
-      <div class="circle green"></div>
-      <div class="input"><input oninput = "calculateBudget(this.value);" class="selectedAmount" type='text'></input></div>
-      <span class="title">Police</span>
-    </div>
-
-    <div class="element">
-      <div class="circle turq"> </div>
-      <div class="input"><input oninput = "calculateBudget(this.value);" class="selectedAmount" type='text'></input></div>
-      <span class="title">Fire</span>
-    </div>
-
-    <div class="element">
-      <div class="circle gold"></div>
-      <div class="input"><input oninput = "calculateBudget(this.value);" class="selectedAmount" type='text'></input></div>
-      <span class="title">Community Service</span>
-    </div>
-
-
-
     <div id="budgetDisplay">
     </div>
 
@@ -56,8 +20,12 @@
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ExternalStyles/barchart.css')}}" />
 {% endblock %} 
 {% block script %}
+
 <script type="text/javascript"> 
+
    var CITYBUDGET = "{{citybudget}}";
+   var CITYNAME = "{{cityname}}"
+   var ENCODEDCITYNAME = "{{encodedcityname}}"
    CITYBUDGET = cleanAndParseJinja2Globals(CITYBUDGET);
    
    CITYBUDGET = _.map(CITYBUDGET,function(s){
