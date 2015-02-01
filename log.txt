@@ -1,0 +1,140 @@
+Exception on / [GET]
+Traceback (most recent call last):
+  File "/Library/Python/2.7/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Python/2.7/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Python/2.7/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Python/2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Python/2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 47, in root
+    result = engine.execute('SELECT cityname FROM City')
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/base.py", line 1752, in execute
+    return connection.execute(statement, *multiparams, **params)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/base.py", line 721, in execute
+    return self._execute_text(object, multiparams, params)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/base.py", line 870, in _execute_text
+    statement, parameters
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/base.py", line 958, in _execute_context
+    context)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/base.py", line 1160, in _handle_dbapi_exception
+    exc_info
+  File "/Library/Python/2.7/site-packages/sqlalchemy/util/compat.py", line 199, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/base.py", line 951, in _execute_context
+    context)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/default.py", line 436, in do_execute
+    cursor.execute(statement, parameters)
+  File "/Library/Python/2.7/site-packages/MySQLdb/cursors.py", line 205, in execute
+    self.errorhandler(self, exc, value)
+  File "/Library/Python/2.7/site-packages/MySQLdb/connections.py", line 36, in defaulterrorhandler
+    raise errorclass, errorvalue
+OperationalError: (OperationalError) (2013, 'Lost connection to MySQL server during query') 'SELECT cityname FROM City' ()
+Exception on / [GET]
+Traceback (most recent call last):
+  File "/Library/Python/2.7/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Python/2.7/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Python/2.7/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Python/2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Python/2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 47, in root
+    result = engine.execute('SELECT cityname FROM City')
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/base.py", line 1752, in execute
+    return connection.execute(statement, *multiparams, **params)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/base.py", line 721, in execute
+    return self._execute_text(object, multiparams, params)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/base.py", line 870, in _execute_text
+    statement, parameters
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/base.py", line 958, in _execute_context
+    context)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/base.py", line 1160, in _handle_dbapi_exception
+    exc_info
+  File "/Library/Python/2.7/site-packages/sqlalchemy/util/compat.py", line 199, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/base.py", line 951, in _execute_context
+    context)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/default.py", line 436, in do_execute
+    cursor.execute(statement, parameters)
+  File "/Library/Python/2.7/site-packages/MySQLdb/cursors.py", line 205, in execute
+    self.errorhandler(self, exc, value)
+  File "/Library/Python/2.7/site-packages/MySQLdb/connections.py", line 36, in defaulterrorhandler
+    raise errorclass, errorvalue
+OperationalError: (OperationalError) (2013, 'Lost connection to MySQL server during query') 'SELECT cityname FROM City' ()
+Exception on / [GET]
+Traceback (most recent call last):
+  File "/Library/Python/2.7/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Python/2.7/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Python/2.7/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Python/2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Python/2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 47, in root
+    result = engine.execute('SELECT cityname FROM City')
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/base.py", line 1752, in execute
+    return connection.execute(statement, *multiparams, **params)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/base.py", line 721, in execute
+    return self._execute_text(object, multiparams, params)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/base.py", line 870, in _execute_text
+    statement, parameters
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/base.py", line 958, in _execute_context
+    context)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/base.py", line 1160, in _handle_dbapi_exception
+    exc_info
+  File "/Library/Python/2.7/site-packages/sqlalchemy/util/compat.py", line 199, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/base.py", line 951, in _execute_context
+    context)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/default.py", line 436, in do_execute
+    cursor.execute(statement, parameters)
+  File "/Library/Python/2.7/site-packages/MySQLdb/cursors.py", line 205, in execute
+    self.errorhandler(self, exc, value)
+  File "/Library/Python/2.7/site-packages/MySQLdb/connections.py", line 36, in defaulterrorhandler
+    raise errorclass, errorvalue
+OperationalError: (OperationalError) (2013, 'Lost connection to MySQL server during query') 'SELECT cityname FROM City' ()
+Exception on / [GET]
+Traceback (most recent call last):
+  File "/Library/Python/2.7/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Python/2.7/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Python/2.7/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Python/2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Python/2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 47, in root
+    result = engine.execute('SELECT cityname FROM City')
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/base.py", line 1752, in execute
+    return connection.execute(statement, *multiparams, **params)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/base.py", line 721, in execute
+    return self._execute_text(object, multiparams, params)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/base.py", line 870, in _execute_text
+    statement, parameters
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/base.py", line 958, in _execute_context
+    context)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/base.py", line 1160, in _handle_dbapi_exception
+    exc_info
+  File "/Library/Python/2.7/site-packages/sqlalchemy/util/compat.py", line 199, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/base.py", line 951, in _execute_context
+    context)
+  File "/Library/Python/2.7/site-packages/sqlalchemy/engine/default.py", line 436, in do_execute
+    cursor.execute(statement, parameters)
+  File "/Library/Python/2.7/site-packages/MySQLdb/cursors.py", line 205, in execute
+    self.errorhandler(self, exc, value)
+  File "/Library/Python/2.7/site-packages/MySQLdb/connections.py", line 36, in defaulterrorhandler
+    raise errorclass, errorvalue
+OperationalError: (OperationalError) (2013, 'Lost connection to MySQL server during query') 'SELECT cityname FROM City' ()

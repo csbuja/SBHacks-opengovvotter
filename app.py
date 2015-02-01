@@ -8,6 +8,7 @@ import json
 
 app = Flask(__name__)
 engine = getEngine()
+engine.connect()
 
 import logging
 from logging import FileHandler
@@ -42,7 +43,6 @@ def decode(s):
 
 @app.route('/')
 def root():
-    connection = engine.connect()
     cities = []
     result = engine.execute('SELECT cityname FROM City') 
     for row in result:
@@ -66,19 +66,16 @@ def root():
                        'total' : total,
                        'top_cat' : maxSpenderLabel
         });
-    connection.close()
     return render_template('root.html',cities=cities)
 
 @app.route('/vote/<cityname>')
 def vote(cityname=None):
     if cityname == None:
         return render_template('404.html'), 404
-    connection = engine.connect()
     result = engine.execute('SELECT * FROM Budget b WHERE b.cityname=\'%s\' AND b.fromCity=1' % cityname) 
     toReturn = []
     for row in result:
         toReturn.append(row['spenndingvariables'])
-    connection.close()
     encodedcityname = cityname
     cityname = splitStringByUpperCase(cityname)
     return render_template('vote.html',citybudget=toReturn, cityname=cityname, encodedcityname=encodedcityname)
@@ -87,10 +84,8 @@ def vote(cityname=None):
 def postVote():
     vote =  request.form['vote']
     cityname = request.form['cityname']
-    connection = engine.connect()
     if rowExists(engine,cityname,"City","cityname"):
         engine.execute('INSERT Budget(cityname,fromCity,spenndingvariables) VALUES (\'%s\',0,\'%s\')' % (cityname,vote))
-    connection.close()
     return json.dumps({})
 
 
@@ -98,7 +93,6 @@ def postVote():
 def voteresults(cityname=None):
     if cityname == None:
         return render_template('404.html'), 404
-    connection = engine.connect()
     result = engine.execute('SELECT * FROM Budget b WHERE b.cityname=\'%s\'' % cityname) 
     cityBudget = []
     voteBudget = []
@@ -107,7 +101,6 @@ def voteresults(cityname=None):
             cityBudget.append(row['spenndingvariables'])
         else:
             voteBudget.append(row['spenndingvariables'])
-    connection.close()
     encodedcityname = cityname
     cityname = splitStringByUpperCase(cityname)
     return render_template('voteresults.html',citybudget=cityBudget,voteBudget=voteBudget, cityname=cityname, encodedcityname=encodedcityname)
