@@ -10,7 +10,7 @@ app = Flask(__name__)
 engine = getEngine()
 
 import logging
-from FileHandler import FileHandler
+from logging import FileHandler
 file_handler = FileHandler("log.txt")
 file_handler.setLevel(logging.WARNING)
 app.logger.addHandler(file_handler)
@@ -113,5 +113,5 @@ def voteresults(cityname=None):
     return render_template('voteresults.html',citybudget=cityBudget,voteBudget=voteBudget, cityname=cityname, encodedcityname=encodedcityname)
 
 if __name__ == '__main__':
-    app.run()
+    app.run(port=80)
 
