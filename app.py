@@ -3,8 +3,17 @@
 from flask import Flask, request, render_template
 from databaseinteraction import getEngine, rowExists
 import json
+
+
+
 app = Flask(__name__)
 engine = getEngine()
+
+import logging
+from FileHandler import FileHandler
+file_handler = FileHandler("log.txt")
+file_handler.setLevel(logging.WARNING)
+app.logger.addHandler(file_handler)
 
 def splitStringByUpperCase(s):
     arr = []
