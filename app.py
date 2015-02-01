@@ -68,6 +68,13 @@ def root():
         });
     return render_template('root.html',cities=cities)
 
+# @app.route('/static/FEScript/<file_name>.js')
+# def send_text_file(file_name):
+#     """Send your static text file."""
+#     file_dot_jayess= file_name + '.js'
+#     return app.send_static_file(file_dot_jayess)
+
+
 @app.route('/vote/<cityname>')
 def vote(cityname=None):
     if cityname == None:
