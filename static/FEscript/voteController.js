@@ -110,7 +110,7 @@ $(document).ready(function(){
 	var chart = new CanvasJS.Chart("chartContainer",
     {
       title:{
-        text: "City Spending",
+        text: "Last Year's Spending by " +budgetModel.getCityName(),
         horizontalAlign: "center",    
       },
       width: 600,

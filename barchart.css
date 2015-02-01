@@ -26,8 +26,8 @@ bottom: 350px;
 }
 
 #checkMark{
-	height: 30px;
-	width: 30px;
+	height: 20px;
+	width: 20px;
 	position: relative;
 	left: 50px;
 }
@@ -80,10 +80,6 @@ li{
 	margin: 10px 0px 0px 10px;
 }
 
-
-#cityList tr{
-	height: 40px;
-}
 .cityEle{
 	height:40px;
 }
@@ -94,14 +90,6 @@ li{
 	position: relative;
 	top: 140px;
 	left: 200px;
-}
-
-#cityList td{
-	cursor: default;
-}
-
-#cityList th{
-	cursor: default;
 }
 
 #cityName{
@@ -232,9 +220,7 @@ tr:hover{
 
 }
 
-#chartContainer2 {
-	width: 50%;
-}
+
 tr{
 	border-collapse: none;
 }

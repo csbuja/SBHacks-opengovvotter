@@ -1,14 +1,32 @@
 {% extends "base.html" %}
 {%block body%}
   
-  <ul style="margin-top: 100px">
-  <h1>List of Cities</h1>
+  <table id="cityList">
+  <tr >
+    <th>City Name</th>
+    <th>Budget</th>
+    <th>Most Spent On</th>
+    <th>Voting Eligibility</th>
+  </tr>
   {% for city in cities %}
-  <li>
-    <a href="/voteresults/{{city.encodedcityname}}" style="display:inline-block;">{{city.cityname}}</a>
-    <a href="/vote/{{city.encodedcityname}}" style="display:inline-block;text-decoration:none;color: red;">VOTE</a>
+    <tr>
+    <td class="rowEle">
+        <a href="/voteresults/{{city.encodedcityname}}">{{city.cityname}}</a>
+      </td>
+      <td class="rowEle">
+        ${{city.total}}
+      </td>
+      <td class="rowEle">
+        {{city.top_cat}} 
+      </td>
+      {% if city.cityname=="Palo Alto" %}
+      <td class="rowEle checkrow">
+        <a href="/vote/{{city.encodedcityname}}"><img id="checkMark" src={{ url_for('static', filename = 'vote.png') }} alt="checkmark image"/></a>
+      </td>
+      {% endif %}
+      </tr>
   {% endfor %}
-  </ul>
+  </table>
 {% endblock %}
 {% block style %}
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ExternalStyles/barchart.css')}}" />

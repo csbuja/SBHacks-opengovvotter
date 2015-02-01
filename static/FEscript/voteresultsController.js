@@ -77,7 +77,7 @@ $(document).ready(function(){
 	var cityChart = new CanvasJS.Chart("chartContainer1",
     {
       title:{
-        text: "City Spending",
+        text: "Last Year's Spending by " + budgetModel.getCityName(),
         horizontalAlign: "center",    
       },
       width: 600,
@@ -113,7 +113,7 @@ $(document).ready(function(){
   var voteChart = new CanvasJS.Chart("chartContainer2",
     {
       title:{
-        text: "Community Proposed Budget",
+        text: "Community Proposed Budget for " + budgetModel.getCityName(),
         horizontalAlign: "center",    
       },
       width: 600,

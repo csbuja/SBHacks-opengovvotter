@@ -20,6 +20,16 @@ def splitStringByUpperCase(s):
             arr.append(val)
     return ''.join(arr)
 
+def decode(s):
+    o = {}
+    arr = s.split('##??##')
+    i=0
+    while i < len(arr):
+        labelValTuple = arr[i].split('####')
+        o[labelValTuple[0]] = int(labelValTuple[1])
+        i+=1
+    return o
+
 
 @app.route('/')
 def root():
@@ -27,8 +37,25 @@ def root():
     cities = []
     result = engine.execute('SELECT cityname FROM City') 
     for row in result:
+        budresult = engine.execute('SELECT spenndingvariables FROM Budget WHERE cityname=\'%s\' AND fromCity=1' % row['cityname'])
+        spendingString = ""
+        for bRow in budresult:
+            spendingString =  bRow['spenndingvariables']
+
+        spending = decode(spendingString)
+        total = 0
+        maxSpenderVal = -1
+        maxSpenderLabel = ""
+        for key in spending:
+            total+=spending[key]
+            if spending[key] > maxSpenderVal:
+                maxSpenderVal = spending[key]
+                maxSpenderLabel = key
+
         cities.append({'cityname' : splitStringByUpperCase( row['cityname']),
-                       'encodedcityname' :row['cityname']
+                       'encodedcityname' :row['cityname'],
+                       'total' : total,
+                       'top_cat' : maxSpenderLabel
         });
     connection.close()
     return render_template('root.html',cities=cities)
