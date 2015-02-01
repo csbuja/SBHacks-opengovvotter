@@ -104,5 +104,5 @@ def voteresults(cityname=None):
     return render_template('voteresults.html',citybudget=cityBudget,voteBudget=voteBudget, cityname=cityname, encodedcityname=encodedcityname)
 
 if __name__ == '__main__':
-    app.run(debug=True,port=80)
+    app.run()
 
