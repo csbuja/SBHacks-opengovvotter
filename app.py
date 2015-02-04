@@ -4,11 +4,21 @@ from flask import Flask, request, render_template
 from databaseinteraction import getEngine, rowExists
 import json
 
-
+def connectToDatabase(engine):
+    try:
+        engine.connect()
+    except:
+        return connectToDatabase(engine)
+    return
+def executeQuery(engine,query):
+    try:
+        return engine.execute(query)
+    except:
+        return executeQuery(engine,query)
 
 app = Flask(__name__, static_url_path='/static')
 engine = getEngine()
-engine.connect()
+connectToDatabase(engine)
 
 import logging
 from logging import FileHandler
@@ -44,9 +54,9 @@ def decode(s):
 @app.route('/')
 def root():
     cities = []
-    result = engine.execute('SELECT cityname FROM City') 
+    result = executeQuery(engine,'SELECT cityname FROM City') 
     for row in result:
-        budresult = engine.execute('SELECT spenndingvariables FROM Budget WHERE cityname=\'%s\' AND fromCity=1' % row['cityname'])
+        budresult = executeQuery(engine,'SELECT spenndingvariables FROM Budget WHERE cityname=\'%s\' AND fromCity=1' % row['cityname'])
         spendingString = ""
         for bRow in budresult:
             spendingString =  bRow['spenndingvariables']
@@ -79,7 +89,7 @@ def root():
 def vote(cityname=None):
     if cityname == None:
         return render_template('404.html'), 404
-    result = engine.execute('SELECT * FROM Budget b WHERE b.cityname=\'%s\' AND b.fromCity=1' % cityname) 
+    result = executeQuery(engine,'SELECT * FROM Budget b WHERE b.cityname=\'%s\' AND b.fromCity=1' % cityname) 
     toReturn = []
     for row in result:
         toReturn.append(row['spenndingvariables'])
@@ -92,7 +102,7 @@ def postVote():
     vote =  request.form['vote']
     cityname = request.form['cityname']
     if rowExists(engine,cityname,"City","cityname"):
-        engine.execute('INSERT Budget(cityname,fromCity,spenndingvariables) VALUES (\'%s\',0,\'%s\')' % (cityname,vote))
+        executeQuery(engine,'INSERT Budget(cityname,fromCity,spenndingvariables) VALUES (\'%s\',0,\'%s\')' % (cityname,vote))
     return json.dumps({})
 
 
@@ -100,7 +110,7 @@ def postVote():
 def voteresults(cityname=None):
     if cityname == None:
         return render_template('404.html'), 404
-    result = engine.execute('SELECT * FROM Budget b WHERE b.cityname=\'%s\'' % cityname) 
+    result = executeQuery(engine,'SELECT * FROM Budget b WHERE b.cityname=\'%s\'' % cityname) 
     cityBudget = []
     voteBudget = []
     for row in result:
